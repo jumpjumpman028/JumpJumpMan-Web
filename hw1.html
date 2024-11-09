@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Local Storage</title>
+    <style type="text/CSS">
+        table {
+            width: 90%;
+            border-collapse: collapse;
+            background-color: lightblue;
+            font-family: Perpetua;
+        }
+
+        table, td, th {
+            border: 1px solid black;
+            padding: 4px;
+        }
+
+        th {
+            text-align: center;
+            color: white;
+            background-color: darkblue;
+        }
+
+        tr:nth-child(odd) {
+            background-color: white;
+        }
+
+        td {
+            text-align: center;
+        }
+    </style>
+    <script type="text/javascript">
+        function start(){
+            document.getElementById("addButton").addEventListener("click",add,false);
+            document.getElementById("removeAllButton").addEventListener("click",remove,false);
+            update();
+        }
+        function update(){
+            //console.log(localStorage.key(0).substring(0,4))
+            //document.getElementById("display").innerHTML = '<table><tr><th>Title</th><th>Author</th><th>Year</th><th>URL</th></tr>'
+            document.getElementById("display").innerHTML = " ";
+            for(var i=0;i<localStorage.length;i++){
+                if(localStorage.key(i).substring(0,4)=="ntou"){
+                    let key = localStorage.key(i);
+                    let obj = JSON.parse(localStorage.getItem(key));
+                    //console.log( obj );
+                    document.getElementById("display").innerHTML += 
+                    `<tr>
+                        <td>${obj.title}</td>
+                        <td>${obj.author}</td>
+                        <td>${obj.year}</td>
+                        <td><a href="${obj.link}">${obj.link}</td>
+                    </tr>`
+                }
+            }
+
+            //document.getElementById("display").innerHTML += '</table>'
+        }
+        function add(){
+            let temp = new Object();
+            temp.title=document.getElementById("booktitle").value;
+            temp.author=document.getElementById("author").value;
+            temp.year=document.getElementById("year").value;
+            temp.link=document.getElementById("link").value;
+            let objstr = JSON.stringify(temp);
+            const d = new Date();
+            let id = d.getTime();
+            let key = "ntou-" + id;
+            localStorage.setItem(key,objstr);  
+            update();
+            //console.log(objstr);
+        }
+
+        function remove(){
+            localStorage.clear();
+            update();
+        }
+
+        window.addEventListener("load",start,false);
+    </script>
+</head>
+
+<body>
+    <form action="#">
+        <p>
+            <label>Book Title:
+                <input id="booktitle" type="text">
+            </label>
+            <label>Author(s):
+                <input id="author" type="text">
+            </label>
+            <label>Year:
+                <input id="year" type="text">
+            </label>
+            <label>Book URL:
+                <input id="link" type="text">
+            </label>
+        </p>
+        <p>
+            <input type="button" value="Add New Item" id="addButton">
+            <input type="button" value="Remove All Items" id="removeAllButton">
+        </p>
+    </form>
+    <hr>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Year</th>
+            <th>URL</th>
+        </tr>
+        <tbody id="display">
+        </tbody>
+    </table>
+</body>
+
+</html>
