@@ -29,8 +29,8 @@ body{
     font-family: Arial, Helvetica, sans-serif     ;
     color: white;
 }
-#top{
-  
+.top{
+
   font-size:4em;
   color: white;
   text-align: center;
