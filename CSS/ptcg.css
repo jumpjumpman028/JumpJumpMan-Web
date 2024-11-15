@@ -30,9 +30,10 @@ body{
     box-shadow: #c0392b 0px 3px 2px,#000 0px 3px 5px;
   }
   #top{
+    font-size:4em;
     color: white;
     text-align: center;
-}
+  }
 .corner{
     position: fixed;
     bottom: 10px;
@@ -45,4 +46,16 @@ body{
 }
 .corner:hover {
     opacity: 0.8; /* 當滑鼠懸停時提高透明度 */
+}
+
+.picture-container{
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.pokemon{
+    width: 12%;
+    height: auto;
+    right: 10px;
+    position: fixed;
 }
