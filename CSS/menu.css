@@ -24,14 +24,14 @@
     top: 4px;
     box-shadow: #c0392b 0px 3px 2px,#000 0px 3px 5px;
   }
-body{
-    background-color: rgb(71, 71, 71);
-    font-family: Arial, Helvetica, sans-serif     ;
-    color: white;
-}
 .top{
 
   font-size:4em;
   color: white;
   text-align: center;
+}
+body{
+    background-color: rgb(71, 71, 71);
+    font-family: Arial, Helvetica, sans-serif     ;
+    color: white;
 }
